@@ -247,6 +247,35 @@ footer{background:#080808;border-top:1px solid rgba(240,237,232,.06);padding:48p
 </style>
 </head>
 <body>
+<script>
+function showPage(page) {
+  var main = document.getElementById('main-site');
+  var imp  = document.getElementById('page-imprint');
+  var priv = document.getElementById('page-privacy');
+  if (!main || !imp || !priv) return;
+  if (page === 'imprint') {
+    main.style.display = 'none';
+    priv.classList.remove('active');
+    imp.classList.add('active');
+    imp.scrollTop = 0;
+    window.history.pushState({}, '', '#imprint');
+    document.title = 'Imprint — ELEVATES Consulting';
+  } else if (page === 'privacy') {
+    main.style.display = 'none';
+    imp.classList.remove('active');
+    priv.classList.add('active');
+    priv.scrollTop = 0;
+    window.history.pushState({}, '', '#privacy');
+    document.title = 'Privacy Policy — ELEVATES Consulting';
+  } else {
+    imp.classList.remove('active');
+    priv.classList.remove('active');
+    main.style.display = '';
+    window.history.pushState({}, '', window.location.pathname);
+    document.title = 'ELEVATES Consulting — Finance Transformation, M&A & Strategic PMO';
+  }
+}
+</script>
 <div id="main-site">
 <div class="cur" id="cur"></div>
 <div class="cur-ring" id="cring"></div>
@@ -752,40 +781,12 @@ if('ontouchstart' in window){[cur,cring].forEach(e=>e&&(e.style.display='none'))
 
 <script>
 // ---- SPA routing ----
-function showPage(page) {
-  const main = document.getElementById('main-site');
-  const imp  = document.getElementById('page-imprint');
-  const priv = document.getElementById('page-privacy');
-  if (page === 'imprint') {
-    main.style.display = 'none';
-    priv.classList.remove('active');
-    imp.classList.add('active');
-    imp.scrollTop = 0;
-    window.history.pushState({}, '', '#imprint');
-    document.title = 'Imprint — ELEVATES Consulting';
-  } else if (page === 'privacy') {
-    main.style.display = 'none';
-    imp.classList.remove('active');
-    priv.classList.add('active');
-    priv.scrollTop = 0;
-    window.history.pushState({}, '', '#privacy');
-    document.title = 'Privacy Policy — ELEVATES Consulting';
-  } else {
-    imp.classList.remove('active');
-    priv.classList.remove('active');
-    main.style.display = '';
-    window.history.pushState({}, '', '/');
-    document.title = 'ELEVATES Consulting — Finance Transformation, M&A & Strategic PMO';
-  }
-}
-// handle back/forward browser button
 window.addEventListener('popstate', () => {
   const h = window.location.hash;
   if (h === '#imprint') showPage('imprint');
   else if (h === '#privacy') showPage('privacy');
   else showPage('home');
 });
-// on load, check hash
 (function() {
   const h = window.location.hash;
   if (h === '#imprint') showPage('imprint');
