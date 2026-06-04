@@ -19,6 +19,7 @@
 <meta name="twitter:description" content="Abdul Yousefi — CCH Tagetik Consultant &amp; Strategic Finance Advisor">
 <!-- Canonical -->
 <link rel="canonical" href="https://elevates-consulting.com">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0a0a'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-weight='bold' fill='%23c9a96e'%3EE%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 <style>
@@ -140,6 +141,7 @@ nav.scrolled{background:rgba(10,10,10,.92);backdrop-filter:blur(20px);padding:18
 .about-text-col h2{margin-bottom:32px;}
 .about-para{font-size:.95rem;font-weight:300;line-height:1.85;color:rgba(240,237,232,.5);margin-bottom:16px;}
 .about-para strong{color:#f0ede8;font-weight:500;}
+.cert-proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
 .cred-col{}
 .cred2{display:flex;flex-direction:column;gap:4px;padding:16px 0;border-bottom:1px solid rgba(240,237,232,.07);}
 .cred2:first-child{border-top:1px solid rgba(240,237,232,.07);}
@@ -157,14 +159,37 @@ nav.scrolled{background:rgba(10,10,10,.92);backdrop-filter:blur(20px);padding:18
 .pstep-desc{font-size:.82rem;font-weight:300;line-height:1.7;color:rgba(240,237,232,.35);}
 
 /* PROJECTS */
-.projects-list{margin-top:64px;display:flex;flex-direction:column;}
-.proj{display:grid;grid-template-columns:80px 1fr 160px 120px;gap:24px;align-items:center;padding:24px 0;border-top:1px solid rgba(240,237,232,.08);transition:background .2s,padding .3s;cursor:default;}
-.proj:last-child{border-bottom:1px solid rgba(240,237,232,.08);}
-.proj:hover{background:rgba(201,169,110,.04);padding:24px 16px;}
-.proj-num{font-size:.60rem;font-weight:500;letter-spacing:.1em;color:#c9a96e;}
-.proj-sector{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:400;}
-.proj-tool{font-size:.72rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#c9a96e;}
-.proj-period{font-size:.68rem;font-weight:300;color:rgba(240,237,232,.3);text-align:right;}
+.projects-list{margin-top:48px;display:flex;flex-direction:column;}
+.proj-section-label{display:flex;align-items:center;gap:16px;margin:48px 0 4px;}
+.proj-section-label:first-child{margin-top:8px;}
+.proj-section-label span{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:400;font-style:italic;color:rgba(240,237,232,.55);white-space:nowrap;}
+.proj-section-label::before{display:none;}
+.proj-section-label::after{content:'';flex:1;height:1px;background:rgba(240,237,232,.1);}
+
+.proj2{border-top:1px solid rgba(240,237,232,.08);transition:background .2s;}
+.proj2:last-child{border-bottom:1px solid rgba(240,237,232,.08);}
+.proj2-header{display:grid;grid-template-columns:52px 1fr 28px;gap:16px;align-items:start;padding:20px 12px 20px 0;cursor:pointer;transition:padding .2s;}
+.proj2:hover .proj2-header{padding-left:12px;}
+.proj2-num{font-size:.58rem;font-weight:600;letter-spacing:.1em;color:#c9a96e;padding-top:4px;}
+.proj2-main{display:flex;flex-direction:column;gap:6px;}
+.proj2-sector{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:400;color:#f0ede8;line-height:1.3;}
+.proj2-meta{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;}
+.proj2-country{font-size:.65rem;font-weight:400;color:rgba(240,237,232,.3);letter-spacing:.04em;}
+.proj2-tool{font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#c9a96e;}
+.proj2-period{font-size:.62rem;font-weight:300;color:rgba(240,237,232,.25);}
+.proj2-toggle{font-size:1.1rem;font-weight:300;color:rgba(240,237,232,.25);transition:transform .3s,color .2s;padding-top:2px;line-height:1;}
+.proj2.open .proj2-toggle{transform:rotate(45deg);color:#c9a96e;}
+.proj2-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.16,1,.3,1);}
+.proj2.open .proj2-body{max-height:200px;}
+.proj2-bullets{list-style:none;padding:0 0 20px 68px;display:flex;flex-direction:column;gap:8px;}
+.proj2-bullets li{font-size:.78rem;font-weight:300;line-height:1.7;color:rgba(240,237,232,.45);padding-left:16px;position:relative;}
+.proj2-bullets li::before{content:'—';position:absolute;left:0;color:#c9a96e;}
+
+@media(max-width:768px){
+  .proj2-header{grid-template-columns:40px 1fr 24px;padding:18px 0;}
+  .proj2-bullets{padding-left:40px;}
+  .proj2-meta{gap:6px 12px;}
+}
 
 /* CERT */
 .cert-card{background:#161616;border:1px solid rgba(240,237,232,.08);padding:48px 52px;position:relative;overflow:hidden;}
@@ -236,6 +261,7 @@ footer{background:#080808;border-top:1px solid rgba(240,237,232,.06);padding:48p
   .stats{grid-template-columns:1fr 1fr;}
   .stat{padding:36px 24px;}
   .about-layout2{grid-template-columns:1fr;}
+  .cert-proj-grid{grid-template-columns:1fr;gap:56px;}
   .process-grid{grid-template-columns:1fr;border-right:1px solid rgba(240,237,232,.08);}
   .projects-list .proj{grid-template-columns:48px 1fr;gap:12px;}
   .proj-tool,.proj-period{display:none;}
@@ -455,7 +481,7 @@ function showPage(page) {
 
 <!-- PROJECTS + CERT -->
 <section class="section alt" id="projects">
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;">
+  <div class="cert-proj-grid">
     <div>
       <div class="eyebrow rv">Credentials</div>
       <h2 class="sec-h rv">Certified.<br><em>Proven.</em></h2>
@@ -470,7 +496,7 @@ function showPage(page) {
     <div>
       <div class="eyebrow rv">Selected Work</div>
       <h2 class="sec-h rv">Projects that<br><em>shipped.</em></h2>
-      <div class="projects-list rv d1" id="proj-list"></div>
+      <div class="projects-list" id="proj-list"></div>
     </div>
   </div>
 </section>
@@ -569,22 +595,63 @@ const io=new IntersectionObserver(entries=>{
 document.querySelectorAll('.rv,.stat').forEach(el=>io.observe(el));
 
 // projects
-const projects=[
-  {n:'01',sector:'Telecommunications (DAX-40)',tool:'CCH Tagetik',period:'11/2023 – present'},
-  {n:'02',sector:'Industrials',tool:'CCH Tagetik',period:'11/2023 – present'},
-  {n:'03',sector:'Pharma / Retail – Interim',tool:'IFRS · HGB',period:'05/2023 – 10/2023'},
-  {n:'04',sector:'Banking',tool:'CCH Tagetik',period:'01/2022 – 04/2023'},
-  {n:'05',sector:'Energy',tool:'CCH Tagetik',period:'06/2020 – 03/2022'},
-  {n:'06',sector:'Insurance',tool:'CCH Tagetik',period:'04/2019 – 05/2020'},
+const cpmProjects=[
+  {n:'01',sector:'Telecommunications',country:'Germany',tool:'CCH Tagetik',period:'11/2023 – present',bullets:['Design, conception and implementation of CCH Tagetik as consolidation solution','Lead responsibility for the Reporting stream']},
+  {n:'02',sector:'Industrials',country:'Germany',tool:'CCH Tagetik',period:'11/2023 – present',bullets:['Design, conception and implementation of CCH Tagetik as consolidation and planning solution','Project management including independent stakeholder management and coordination']},
+  {n:'03',sector:'Retail · Interim Group Accounting',country:'Germany',tool:'IFRS · HGB',period:'04/2026 – present',bullets:['Support in preparation of monthly, quarterly and annual financial statements under IFRS and HGB','Active further development of existing processes in Group Accounting']},
+  {n:'04',sector:'Pharma · Interim Group Accounting',country:'Germany',tool:'IFRS · HGB',period:'05/2023 – 10/2023',bullets:['Support in preparation of monthly, quarterly and annual financial statements under IFRS and HGB','Active further development of existing processes in Group Accounting']},
+  {n:'05',sector:'Banking',country:'Belgium',tool:'CCH Tagetik',period:'01/2022 – 04/2023',bullets:['Design, conception and implementation of CCH Tagetik as consolidation and planning solution','Project management including independent stakeholder management and coordination']},
+  {n:'06',sector:'Banking · Optimisation',country:'Germany',tool:'CCH Tagetik',period:'03/2022 – 08/2022',bullets:['Optimisation of consolidation solution for specialist topics such as Collaborative Office, FX-Rate Conversion and ETL','Project management including independent stakeholder management and coordination']},
+  {n:'07',sector:'Industrials · Software Selection',country:'Germany',tool:'Software Selection',period:'02/2022 – 04/2022',bullets:['Software selection for a consolidation and planning solution','Project management including independent stakeholder management and coordination']},
+  {n:'08',sector:'Energy',country:'Germany',tool:'CCH Tagetik',period:'06/2020 – 03/2022',bullets:['Design, conception and implementation of CCH Tagetik as consolidation and planning solution','Project management including independent stakeholder management and coordination']},
+  {n:'09',sector:'Insurance',country:'Germany',tool:'CCH Tagetik',period:'04/2019 – 05/2020',bullets:['Design, conception and implementation of CCH Tagetik as consolidation and planning solution']},
 ];
+const maProjects=[
+  {n:'01',sector:'Health AI',country:'Germany',tool:'Business Strategy & Investor Readiness',period:'2026',bullets:['Business strategy development and investor readiness programme for Health AI venture']},
+  {n:'02',sector:'FinTech',country:'UK / US',tool:'Fundraising',period:'2025',bullets:['Cross-border fundraising advisory for FinTech venture across UK and US markets']},
+  {n:'03',sector:'Data Centers',country:'Germany',tool:'Fundraising',period:'2024',bullets:['Fundraising advisory and investor materials for data centre infrastructure project']},
+  {n:'04',sector:'eMobility',country:'UAE',tool:'Business Model Restructuring',period:'2022',bullets:['Business model restructuring and strategic repositioning for eMobility company in the UAE']},
+  {n:'05',sector:'Digital Health · DoctorYou',country:'Germany',tool:'Head of Finance',period:'09/2020 – 12/2020',bullets:['Financial modelling to map the business model including financial consequences of strategic decisions and planning','Preparation of pitch deck and pitch materials with selection and approach of venture capital investors','Implementation and development of the finance function including team, processes and tools']},
+  {n:'06',sector:'Tele-Health',country:'Germany',tool:'Fundraising',period:'2019',bullets:['Fundraising advisory and investor outreach for early-stage tele-health venture']},
+];
+
 const pl=document.getElementById('proj-list');
-projects.forEach(p=>{
-  const d=document.createElement('div');
-  d.className='proj rv';
-  d.innerHTML=`<span class="proj-num">${p.n}</span><span class="proj-sector">${p.sector}</span><span class="proj-tool">${p.tool}</span><span class="proj-period">${p.period}</span>`;
-  pl.appendChild(d);
-  io.observe(d);
-});
+
+function buildProjects(list, prefix) {
+  list.forEach((p,i)=>{
+    const d=document.createElement('div');
+    d.className='proj2 rv';
+    d.innerHTML=`
+      <div class="proj2-header" onclick="this.parentElement.classList.toggle('open')">
+        <span class="proj2-num">${prefix ? prefix+'-' : ''}${p.n}</span>
+        <div class="proj2-main">
+          <span class="proj2-sector">${p.sector}</span>
+          <span class="proj2-meta"><span class="proj2-country">${p.country}</span><span class="proj2-tool">${p.tool}</span><span class="proj2-period">${p.period}</span></span>
+        </div>
+        <span class="proj2-toggle">+</span>
+      </div>
+      <div class="proj2-body">
+        <ul class="proj2-bullets">${p.bullets.map(b=>`<li>${b}</li>`).join('')}</ul>
+      </div>`;
+    pl.appendChild(d);
+    io.observe(d);
+  });
+}
+
+// Section label: Finance Transformation & PMO
+const cpmLabel=document.createElement('div');
+cpmLabel.className='proj-section-label';
+cpmLabel.innerHTML='<span>Finance Transformation & PMO</span>';
+pl.appendChild(cpmLabel);
+buildProjects(cpmProjects,'');
+
+// Section label: M&A
+const maLabel=document.createElement('div');
+maLabel.className='proj-section-label';
+maLabel.style.marginTop='48px';
+maLabel.innerHTML='<span>M&A · Fundraising & Advisory</span>';
+pl.appendChild(maLabel);
+buildProjects(maProjects,'');
 
 // touch
 if('ontouchstart' in window){[cur,cring].forEach(e=>e&&(e.style.display='none'));document.body.style.cursor='auto';}
